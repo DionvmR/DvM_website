@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Send It: The Art & Science of Racing Cars — Dion von Moltke</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+<!-- Open Graph / Social Preview -->
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://dionvm.com/send-it/">
+<meta property="og:title" content="Send It: The Art & Science of Racing Cars">
+<meta property="og:description" content="The complete coaching curriculum from Rolex 24 winner Dion von Moltke — the three-phase system for finding the limit of any car on any track. Rated 4.7★ on Amazon.">
+<meta property="og:image" content="https://dionvm.com/img/book-cover.jpg">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Send It: The Art & Science of Racing Cars">
+<meta name="twitter:description" content="The complete coaching curriculum from Rolex 24 winner Dion von Moltke — the three-phase system for finding the limit of any car on any track. Rated 4.7★ on Amazon.">
+<meta name="twitter:image" content="https://dionvm.com/img/book-cover.jpg">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --dark: #0f0f0f;
+    --dark-2: #1a1a1a;
+    --accent: #22A93E;
+    --accent-soft: rgba(34, 169, 62, 0.08);
+    --light: #f5f4f0;
+    --mid: #888;
+    --text: #222;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Georgia', serif;
+    color: var(--text);
+    background: var(--dark);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 60px;
+    background: var(--dark);
+    transition: background 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #fff; }
+  .nav-links a.active { color: var(--accent); }
+
+  /* HAMBURGER */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--dark);
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .nav-links.open { display: flex; }
+
+    .nav-links li { width: 100%; text-align: center; }
+
+    .nav-links a {
+      display: block;
+      font-size: 20px;
+      letter-spacing: 3px;
+      padding: 20px;
+      color: rgba(255,255,255,0.75);
+    }
+  }
+
+  /* BOOK HERO */
+  .book-hero {
+    background: var(--dark);
+    padding: 140px 60px 100px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .book-hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 100px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .book-cover-3d {
+    width: 260px;
+    height: 380px;
+    position: relative;
+    flex-shrink: 0;
+    box-shadow: -6px 6px 0 #111, -12px 12px 0 #0a0a0a, -18px 18px 24px rgba(0,0,0,0.6);
+  }
+
+  .book-cover-3d img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+
+  .book-cover-fallback {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    background: linear-gradient(150deg, #1e1e1e 0%, #111 100%);
+    border: 1px solid #2a2a2a;
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .bcf-title {
+    font-family: 'Georgia', serif;
+    font-size: 26px;
+    color: #fff;
+    letter-spacing: 3px;
+    line-height: 1.1;
+  }
+
+  .bcf-sub {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+  }
+
+  .bcf-rule {
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .bcf-author {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+  }
+
+  .book-eyebrow {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .book-title-large {
+    font-family: 'Georgia', serif;
+    font-size: clamp(52px, 6vw, 82px);
+    font-weight: normal;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+  }
+
+  .book-subtitle-text {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.3px;
+    margin-bottom: 8px;
+  }
+
+  .book-byline {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+  }
+
+  .book-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .book-stars { color: var(--accent); font-size: 15px; letter-spacing: 3px; }
+  .book-score { font-family: 'Georgia', serif; font-size: 16px; color: #fff; }
+  .book-review-count {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .book-hero-desc {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .book-btn-group {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .btn-buy {
+    display: inline-block;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 15px 36px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .btn-amazon {
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent);
+  }
+  .btn-amazon:hover { background: #e03600; border-color: #e03600; }
+
+  .btn-audible {
+    background: transparent;
+    color: rgba(255,255,255,0.65);
+    border: 1px solid rgba(255,255,255,0.22);
+  }
+  .btn-audible:hover { border-color: rgba(255,255,255,0.55); color: #fff; }
+
+  .book-formats {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.5px;
+  }
+
+  /* WHAT'S INSIDE */
+  .book-inside {
+    background: var(--light);
+    padding: 100px 60px;
+  }
+
+  .book-inside-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .book-section-h2 {
+    font-family: 'Georgia', serif;
+    font-size: 38px;
+    font-weight: normal;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .book-inside-intro {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: #555;
+    max-width: 640px;
+    margin-bottom: 52px;
+  }
+
+  .book-learns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 56px;
+  }
+
+  .learn-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  .learn-dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 7px;
+  }
+
+  /* REVIEWS */
+  .book-reviews {
+    background: var(--dark);
+    padding: 100px 60px;
+  }
+
+  .book-reviews-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .book-reviews .section-label { color: rgba(255,255,255,0.3); }
+
+  .book-rating-summary {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+  }
+
+  .rating-big {
+    font-family: 'Georgia', serif;
+    font-size: 52px;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .rating-stars-lg { color: var(--accent); font-size: 22px; letter-spacing: 3px; }
+
+  .rating-of {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    align-self: center;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+  }
+
+  .review-card { border-top: 1px solid #252525; padding-top: 28px; }
+
+  .review-card-stars {
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+  }
+
+  .review-text {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  .review-author {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* FINAL CTA */
+  .book-cta-final {
+    background: var(--light);
+    padding: 100px 60px;
+    text-align: center;
+  }
+
+  .book-cta-final-inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .book-cta-final h2 {
+    font-family: 'Georgia', serif;
+    font-size: 42px;
+    font-weight: normal;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    margin-top: 16px;
+  }
+
+  .book-cta-final p {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 40px;
+  }
+
+  .book-cta-final .book-btn-group { justify-content: center; }
+
+  .book-cta-final .btn-audible {
+    color: var(--text);
+    border-color: #bbb;
+  }
+  .book-cta-final .btn-audible:hover { border-color: #888; color: var(--dark); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 64px 60px 40px;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 48px;
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 32px;
+  }
+
+  .footer-name {
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.3px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    padding-top: 4px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: #fff; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.3px;
+  }
+
+  .footer-bottom a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .footer-bottom a:hover { opacity: 0.7; }
+
+  .footer-social {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .social-link {
+    color: rgba(255,255,255,0.4) !important;
+    font-size: 11px !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    transition: color 0.2s !important;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .social-link:hover { color: #fff !important; opacity: 1 !important; }
+  .social-link svg { width: 14px; height: 14px; fill: currentColor; }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    nav { padding: 20px 32px; }
+    .book-hero { padding: 120px 32px 80px; min-height: auto; }
+    .book-hero-inner { gap: 56px; }
+    .book-inside { padding: 80px 32px; }
+    .book-reviews { padding: 80px 32px; }
+    .book-cta-final { padding: 80px 32px; }
+    footer { padding: 48px 32px 32px; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 11px; letter-spacing: 1px; }
+    .book-hero { padding: 100px 20px 60px; }
+    .book-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .book-cover-3d { width: 200px; height: 295px; margin: 0 auto; }
+    .book-inside { padding: 60px 20px; }
+    .book-learns { grid-template-columns: 1fr; gap: 16px; }
+    .book-section-h2 { font-size: 28px; }
+    .book-reviews { padding: 60px 20px; }
+    .reviews-grid { grid-template-columns: 1fr; gap: 36px; }
+    .book-cta-final { padding: 60px 20px; }
+    .book-cta-final h2 { font-size: 30px; }
+    footer { padding: 40px 20px 28px; }
+    .footer-top { flex-direction: column; gap: 28px; padding-bottom: 28px; }
+    .footer-links { flex-wrap: wrap; gap: 16px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes heroFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .hero-up {
+    opacity: 0;
+    animation: heroFadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .hero-in {
+    opacity: 0;
+    animation: heroFadeIn 1s ease forwards;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../" class="nav-logo">Dion von Moltke</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../#story">My Story</a></li>
+    <li><a href="../#speaking">Speaking</a></li>
+    <li><a href="." class="active">Book</a></li>
+    <li><a href="../#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="book-hero">
+  <div class="book-hero-inner">
+
+    <div class="book-cover-3d">
+      <img src="../img/book-cover.jpg" alt="Send It: The Art &amp; Science of Racing Cars"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="book-cover-fallback">
+        <span class="bcf-title">SEND IT</span>
+        <div class="bcf-rule"></div>
+        <span class="bcf-sub">The Art &amp; Science<br>of Racing Cars</span>
+        <span class="bcf-author">Dion von Moltke</span>
+      </div>
+    </div>
+
+    <div class="book-hero-text">
+      <p class="book-eyebrow">The Book</p>
+      <h1 class="book-title-large">Send It</h1>
+      <p class="book-subtitle-text">The Art &amp; Science of Racing Cars</p>
+      <p class="book-byline">By Dion von Moltke</p>
+      <div class="book-rating">
+        <span class="book-stars">★★★★★</span>
+        <span class="book-score">4.7</span>
+        <span class="book-review-count">· 18 reviews on Amazon</span>
+      </div>
+      <p class="book-hero-desc">While competing and winning at the highest levels of motorsport, I was coaching more than 1,000 amateur drivers towards mastering their craft. This book is all of it — the full curriculum, the three-phase system, exactly how I teach any driver to find the limit of any car on any track.</p>
+      <div class="book-btn-group">
+        <a href="https://www.amazon.com/dp/B0CLN6LQWF/" target="_blank" rel="noopener" class="btn-buy btn-amazon">Buy on Amazon</a>
+        <a href="https://www.audible.com/pd/Send-It-Audiobook/B0CPGRLCWJ" target="_blank" rel="noopener" class="btn-buy btn-audible">Buy on Audible</a>
+      </div>
+      <p class="book-formats">Available in Paperback, Kindle &amp; Audiobook</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- What's Inside -->
+<section class="book-inside">
+  <div class="book-inside-inner">
+    <span class="section-label">What's Inside</span>
+    <h2 class="book-section-h2">The complete playbook.<br>Nothing held back.</h2>
+    <p class="book-inside-intro">Driving race cars fast is counter-intuitive and filled with complexity. Dion cuts through the noise — simplifying the act of driving fast into something clear, structured, and immediately actionable for any intermediate or advanced grassroots racer.</p>
+    <div class="book-learns">
+      <div class="learn-item"><span class="learn-dot"></span><span>How to learn any race track, fast</span></div>
+      <div class="learn-item"><span class="learn-dot"></span><span>How to find priorities in any corner</span></div>
+      <div class="learn-item"><span class="learn-dot"></span><span>How to use the brakes into any type of corner</span></div>
+      <div class="learn-item"><span class="learn-dot"></span><span>An introduction to racecraft</span></div>
+      <div class="learn-item"><span class="learn-dot"></span><span>How to drive quickly and safely in the wet</span></div>
+      <div class="learn-item"><span class="learn-dot"></span><span>The three-phase system for working up to the limit</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="book-reviews">
+  <div class="book-reviews-inner">
+    <span class="section-label" style="color:rgba(255,255,255,0.3)">Reader Reviews</span>
+    <div class="book-rating-summary">
+      <span class="rating-big">4.7</span>
+      <span class="rating-stars-lg">★★★★★</span>
+      <span class="rating-of">out of 5 &nbsp;·&nbsp; 18 Amazon reviews</span>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <p class="review-card-stars">★★★★★</p>
+        <p class="review-text">"I have books on driving, but this book stands out because it gives you the conceptual understanding and framework of how to drive fast on a race track. Other books tend to be like golf books — they give you tips. This book provides a driver's perspective and a strategy to actually go faster. I highly recommend it and think it should be in every driver's library."</p>
+        <p class="review-author">— Jack Corwin</p>
+      </div>
+      <div class="review-card">
+        <p class="review-card-stars">★★★★★</p>
+        <p class="review-text">"Dion is one of the best coaches in motorsports and so many of his lessons are jam packed in this little book. He brings together his strategies as well as other proven methods from industry-leading experts in an easy to follow format. I plan to keep this book in my gear bag and refer back to it over and over."</p>
+        <p class="review-author">— Carmen Keel</p>
+      </div>
+      <div class="review-card">
+        <p class="review-card-stars">★★★★★</p>
+        <p class="review-text">"Dion von Moltke has a new and insightful way of looking for the line to drive at your next track. I can't wait to drive my favorite track with this perspective. Great explanations and illustrations!"</p>
+        <p class="review-author">— Dearth</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="book-cta-final">
+  <div class="book-cta-final-inner">
+    <span class="section-label">Get the Book</span>
+    <h2>Ready to go faster?</h2>
+    <p>Available in Paperback, Kindle, and Audiobook.</p>
+    <div class="book-btn-group">
+      <a href="https://www.amazon.com/dp/B0CLN6LQWF/" target="_blank" rel="noopener" class="btn-buy btn-amazon">Buy on Amazon</a>
+      <a href="https://www.audible.com/pd/Send-It-Audiobook/B0CPGRLCWJ" target="_blank" rel="noopener" class="btn-buy btn-audible">Buy on Audible</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-name">Dion von Moltke</div>
+        <div class="footer-tagline">CPO · Founder · Author · Pro Racing Driver</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../#story">My Story</a></li>
+        <li><a href="../#speaking">Speaking</a></li>
+        <li><a href=".">Book</a></li>
+        <li><a href="../#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Dion von Moltke. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dionvm/" target="_blank" rel="noopener" class="social-link">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="../">&larr; Back to Home</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks  = document.getElementById('nav-links');
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // Hero entrance
+  (function () {
+    [
+      ['.book-eyebrow',      0, 'hero-up'],
+      ['.book-title-large', 180, 'hero-up'],
+      ['.book-subtitle-text', 340, 'hero-up'],
+      ['.book-byline',      400, 'hero-up'],
+      ['.book-rating',      460, 'hero-up'],
+      ['.book-hero-desc',   520, 'hero-up'],
+      ['.book-btn-group',   620, 'hero-up'],
+      ['.book-formats',     680, 'hero-up'],
+      ['.book-cover-3d',    100, 'hero-in'],
+    ].forEach(([sel, delay, cls]) => {
+      const el = document.querySelector(sel);
+      if (!el) return;
+      el.classList.add(cls);
+      el.style.animationDelay = delay + 'ms';
+    });
+  })();
+
+  // Scroll reveal
+  (function () {
+    document.querySelectorAll('.learn-item').forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = (i * 80) + 'ms';
+    });
+    document.querySelectorAll('.review-card').forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = (i * 120) + 'ms';
+    });
+    ['.book-inside .section-label', '.book-section-h2', '.book-inside-intro',
+     '.book-reviews .section-label', '.book-rating-summary',
+     '.book-cta-final .section-label', '.book-cta-final h2',
+     '.book-cta-final p', '.book-cta-final .book-btn-group'].forEach(sel => {
+      const el = document.querySelector(sel);
+      if (el) el.classList.add('reveal');
+    });
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  })();
+</script>
+
+</body>
+</html>
