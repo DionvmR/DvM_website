@@ -215,9 +215,53 @@
     .stat .big{font-size:46px;}
     .dist-row{grid-template-columns:92px 1fr 44px;gap:10px;}
   }
+
+  /* main site nav (matches homepage) */
+  .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:70px;display:flex;justify-content:space-between;align-items:center;padding:0 60px;background:var(--dark);}
+  .site-nav .nav-logo{font-family:var(--serif);font-size:18px;color:#fff;letter-spacing:.5px;text-decoration:none;}
+  .site-nav .nav-links{display:flex;gap:36px;list-style:none;margin:0;padding:0;}
+  .site-nav .nav-links a{font-family:var(--sans);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.75);text-decoration:none;transition:color .2s;}
+  .site-nav .nav-links a:hover{color:#fff;}
+  .site-nav .nav-links a.current{color:var(--accent);}
+  .site-nav .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:101;}
+  .site-nav .nav-toggle span{display:block;width:24px;height:2px;background:#fff;transition:transform .3s,opacity .3s;}
+  .site-nav .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .site-nav .nav-toggle.open span:nth-child(2){opacity:0;}
+  .site-nav .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  nav.toc{top:70px;}
+  [id]{scroll-margin-top:120px;}
+  @media(max-width:960px){
+    .site-nav{padding:0 32px;}
+  }
+  @media(max-width:768px){
+    .site-nav{height:56px;padding:0 20px;}
+    .site-nav .nav-logo{font-size:16px;}
+    .site-nav .nav-toggle{display:flex;}
+    .site-nav .nav-links{display:none;flex-direction:column;gap:0;position:fixed;inset:0;height:100vh;background:var(--dark);align-items:center;justify-content:center;z-index:100;}
+    .site-nav .nav-links.open{display:flex;}
+    .site-nav .nav-links li{width:100%;text-align:center;}
+    .site-nav .nav-links a{display:block;font-size:20px;letter-spacing:3px;padding:20px;}
+    nav.toc{top:56px;}
+    [id]{scroll-margin-top:104px;}
+  }
 </style>
 </head>
 <body>
+
+<!-- MAIN SITE NAV -->
+<nav class="site-nav">
+  <a href="/" class="nav-logo">Dion von Moltke</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/#story">My Story</a></li>
+    <li><a href="/case-studies/" class="current">Case Studies</a></li>
+    <li><a href="/#speaking">Speaking</a></li>
+    <li><a href="/send-it/">Book</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
 
 <!-- HERO -->
 <header class="hero">
@@ -428,6 +472,13 @@
 </section>
 
 <div class="endnote">Dion von Moltke · ArtistWorks / TrueFire Studios case study · <a href="/case-studies/">All case studies</a> · <a href="https://dionvm.com">dionvm.com</a></div>
+
+<script>
+  (function(){
+    var t=document.getElementById('nav-toggle'),l=document.getElementById('nav-links');
+    if(t&&l)t.addEventListener('click',function(){t.classList.toggle('open');l.classList.toggle('open');});
+  })();
+</script>
 
 </body>
 </html>
